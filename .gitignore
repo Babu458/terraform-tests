@@ -1,0 +1,2 @@
+modules/azureSQL/.terraform/
+modules/azureSQL/.terraform.lock.hcl
