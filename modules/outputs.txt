@@ -33,3 +33,4 @@ output "sql_server_admin_login_pass" {
 
 output "db_encryption_status" {
   value = azurerm_mssql_database.transparent_data_encryption_enabled
+}

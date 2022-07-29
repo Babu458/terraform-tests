@@ -1,6 +1,7 @@
 provider "azurerm"{
   features {}
   subscription_id = "55f702f9-17ee-4d42-8da3-3f0bc97c4158"
+
 }
 
 resource "azurerm_mssql_server" "encrypt-terratest" {
@@ -13,7 +14,7 @@ resource "azurerm_mssql_server" "encrypt-terratest" {
 }
 
 resource "azurerm_mssql_database" "test" {
-  name           = "encrypt_test"
+  name           = "encrypt_test_2"
   server_id      = azurerm_mssql_server.encrypt-terratest.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"
