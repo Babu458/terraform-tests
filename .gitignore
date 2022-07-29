@@ -1,2 +1,4 @@
 modules/azureSQL/.terraform/
 modules/azureSQL/.terraform.lock.hcl
+modules/azureSQL/.terraform.tfstate
+modules/azureSQL/.terraform.tfstate.backup
