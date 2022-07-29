@@ -10,6 +10,7 @@ import (
 func TestDbEncrypt(t *testing.T) {
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
+	policy_error := 0
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// Set the path to the Terraform code that will be tested.
 		TerraformDir: "../../modules/azureSQL",
@@ -21,12 +22,9 @@ func TestDbEncrypt(t *testing.T) {
 	// Run "terraform init" and "terraform apply". Fail the test if there are any errors.
 	if _, err := terraform.InitAndApplyE(t, terraformOptions); err != nil {
 		t.Log(err)
-		expectedEncryptionStatus := terraform.Output(t, terraformOptions, "transparent_data_encryption_enabled")
-	  
-		assert.Equal(t, "false", expectedEncryptionStatus)
+		policy_error = 1
 	}
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
-	expectedEncryptionStatus := terraform.Output(t, terraformOptions, "transparent_data_encryption_enabled")
-	assert.Equal(t, "true", expectedEncryptionStatus)
+	assert.Equal(t, 1, policy_error)
 }
