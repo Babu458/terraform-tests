@@ -16,12 +16,7 @@ func TestDbEncrypt(t *testing.T) {
 	})
 
 	defer terraform.Destroy(t, terraformOptions)
-	terraform.InitAndApplyE(t, terraformOptions)
-	// if _, err := terraform.InitAndApplyE(t, terraformOptions); err != nil {
-	// 	policy_error = +1
-	// 	t.Log(err)
-	// 	terraform.Destroy(t, terraformOptions)
-	// }
+	terraform.ApplyE(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
 	expectedEncryptStatusOne := terraform.Output(t, terraformOptions, "db_encryption_status_test_one")

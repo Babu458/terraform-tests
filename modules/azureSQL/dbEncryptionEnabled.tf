@@ -31,7 +31,7 @@ resource "azurerm_mssql_database" "test-one" {
 
 #Toggling the encryption on an existing database to false
 resource "azurerm_mssql_database" "test-three" {
-  name           = azurerm_mssql_database.test-one.name
-  id             ="/subscriptions/55f702f9-17ee-4d42-8da3-3f0bc97c4158/resourceGroups/Zab-Policies-Test/providers/Microsoft.Sql/servers/encrypt-terratest-2/databases/happy-path"
+  name           = "happy-path-test"
+  server_id      = azurerm_mssql_database.test-one.server_id
   transparent_data_encryption_enabled = false
 }
