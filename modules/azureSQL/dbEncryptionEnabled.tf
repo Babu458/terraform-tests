@@ -9,30 +9,12 @@ terraform {
   }
 }
 
-#Creating an Azure SQL database with encryption
+#Creating an Azure SQL database
 resource "azurerm_mssql_database" "test-one" {
-  name           = "happy-path"
+  name           = var.db_name
   server_id      = var.server_id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"
   sku_name       = "DW100c"
   transparent_data_encryption_enabled = var.db_encryption
 }
-
-# #Creating an Azure SQL database without encryption
-# resource "azurerm_mssql_database" "test-two" {
-#   name           = "sad-path"
-#   server_id      = var.server_id
-#   collation      = "SQL_Latin1_General_CP1_CI_AS"
-#   license_type   = "LicenseIncluded"
-#   sku_name       = "DW100c"
-#   transparent_data_encryption_enabled = false
-# }
-
-# #Toggling the encryption on an existing database to false
-# resource "azurerm_mssql_database" "test-three" {
-#   name           = "happy-path-test"
-#   server_id      = var.server_id
-#   sku_name       = "DW100c"
-#   transparent_data_encryption_enabled = false
-# }

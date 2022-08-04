@@ -9,3 +9,9 @@ variable "db_encryption"{
   type        = bool
   default     = true
 }
+
+variable "db_name"{
+  description = "DB Name"
+  type        = string
+  default     = "database"
+}
