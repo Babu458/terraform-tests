@@ -1,8 +1,8 @@
 #terraform
 modules/azureSQL/.terraform/
 modules/azureSQL/.terraform.lock.hcl
-*.terraform.tfstate
-*.terraform.tfstate.backup
+*.tfstate
+*.tfstate.backup
 
 #go
 *.mod
