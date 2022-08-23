@@ -1,9 +1,9 @@
 package test
 
 import (
-	"testing"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestDbEncryptTrue(t *testing.T) {
@@ -28,6 +28,7 @@ func TestDbEncryptTrue(t *testing.T) {
 }
 
 func TestDbEncryptFalse(t *testing.T) {
+	t.Parallel()
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
@@ -56,7 +57,6 @@ func TestDbEncryptModify(t *testing.T) {
 
 	defer terraform.Destroy(t, terraformOptions)
 	terraform.InitAndApplyE(t, terraformOptions)
-
 
 	terraformOptionsModify := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		// Set the path to the Terraform code that will be tested.
