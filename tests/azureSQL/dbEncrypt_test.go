@@ -7,6 +7,7 @@ import (
 )
 
 func TestDbEncryptTrue(t *testing.T) {
+	t.Parallel()
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
@@ -46,6 +47,7 @@ func TestDbEncryptFalse(t *testing.T) {
 }
 
 func TestDbEncryptModify(t *testing.T) {
+	t.Parallel()
 	// Construct the terraform options with default retryable errors to handle the most common
 	// retryable errors in terraform testing.
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
